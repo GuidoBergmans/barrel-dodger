@@ -6,9 +6,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
 })
+let mySprite2: Sprite = null
 let projectile: Sprite = null
 let mySprite: Sprite = null
 tiles.setTilemap(tilemap`level7`)
+scene.setBackgroundColor(9)
 mySprite = sprites.create(img`
     . . . . . . f b b f . . . . . . 
     . . . . f f b b b b f f . . . . 
@@ -29,6 +31,9 @@ mySprite = sprites.create(img`
     `, SpriteKind.Player)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 5))
 mySprite.ay = 500
+if (info.score() == 10) {
+    game.over(true)
+}
 game.onUpdateInterval(2000, function () {
     projectile = sprites.createProjectileFromSide(img`
         . . . . . . . . . . . . . . . . 
@@ -50,4 +55,26 @@ game.onUpdateInterval(2000, function () {
         `, randint(-100, -80), 0)
     tiles.placeOnTile(projectile, tiles.getTileLocation(9, 5))
     info.changeScoreBy(1)
+})
+game.onUpdateInterval(2000, function () {
+    mySprite2 = sprites.create(img`
+        . . . . f f f f f f f f f f f f 
+        . . . . f f f f f f f f f f f f 
+        . . . . f f f f f f f f f f f f 
+        . f f f . . . . . . . . . . . . 
+        . f f f . . . . . . . . . . . . 
+        . f f f . . . . . . . . . . . . 
+        . f f f . . . . . . . . . . . . 
+        . f f f . . . . . . f f f f f f 
+        . f f f . . . . . . f f f f f f 
+        . f f f . . . . . . f f f f f f 
+        . f f f . . . . . . . . . f f f 
+        . f f f . . . . . . . . . f f f 
+        . f f f . . . . . . . . . f f f 
+        . . . . f f f f f f f f f . . . 
+        . . . . f f f f f f f f f . . . 
+        . . . . f f f f f f f f f . . . 
+        `, SpriteKind.Food)
+    mySprite2.setVelocity(randint(-70, -50), 0)
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(9, 5))
 })
