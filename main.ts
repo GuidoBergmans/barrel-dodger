@@ -25,22 +25,23 @@ function maak_taart () {
         . . . . . . b b b b 3 d d d b a 
         . . . . . . . . . . b b b a a . 
         `, SpriteKind.Food)
-    mySprite2.say("GEFELICITEERD OPA!".substr(info.score(), 1))
+    mySprite2.say(Tekst.substr(info.score(), 1))
     mySprite2.setVelocity(randint(-70, -50), 0)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(9, 5))
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy()
-    if (info.score() == 18) {
+    if (info.score() == Tekst.length) {
         info.stopCountdown()
-        game.showLongText("GEFELICITEERD OPA!", DialogLayout.Bottom)
+        game.showLongText(Tekst, DialogLayout.Bottom)
         game.over(true)
     }
     maak_taart()
 })
 let projectile: Sprite = null
 let mySprite2: Sprite = null
+let Tekst = ""
 let mySprite: Sprite = null
 tiles.setTilemap(tilemap`level7`)
 scene.setBackgroundColor(9)
@@ -62,10 +63,11 @@ mySprite = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
+Tekst = "GEFELICITEERD TANTE JANNEKE!"
 maak_taart()
 tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 5))
 mySprite.ay = 500
-info.startCountdown(40)
+info.startCountdown(Tekst.length * 2.5)
 game.onUpdateInterval(2000, function () {
     projectile = sprites.createProjectileFromSide(img`
         . . . . . . . . . . . . . . . . 
