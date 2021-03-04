@@ -41,8 +41,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 })
 let projectile: Sprite = null
 let mySprite2: Sprite = null
-let Tekst = ""
 let mySprite: Sprite = null
+let Tekst = ""
+Tekst = "GEFELICITEERD TANTE JANNEKE!"
 tiles.setTilemap(tilemap`level7`)
 scene.setBackgroundColor(9)
 mySprite = sprites.create(img`
@@ -63,7 +64,6 @@ mySprite = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-Tekst = "GEFELICITEERD TANTE JANNEKE!"
 maak_taart()
 tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 5))
 mySprite.ay = 500
