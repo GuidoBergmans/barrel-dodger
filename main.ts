@@ -25,7 +25,7 @@ function maak_taart () {
         . . . . . . b b b b 3 d d d b a 
         . . . . . . . . . . b b b a a . 
         `, SpriteKind.Food)
-    mySprite2.say("GEFELICITEERD OPA!".substr(info.score(), 1))
+    mySprite2.say("GEFELICITEERD WIM!".substr(info.score(), 1))
     mySprite2.setVelocity(randint(-70, -50), 0)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(9, 5))
 }
@@ -65,7 +65,7 @@ mySprite = sprites.create(img`
 maak_taart()
 tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 5))
 mySprite.ay = 500
-info.startCountdown(40)
+info.startCountdown(50)
 game.onUpdateInterval(2000, function () {
     projectile = sprites.createProjectileFromSide(img`
         . . . . . . . . . . . . . . . . 
