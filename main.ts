@@ -2,6 +2,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
         mySprite.vy = -200
     }
+    music.beamUp.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
@@ -27,14 +28,14 @@ function maak_taart () {
         `, SpriteKind.Food)
     mySprite2.say("GEFELICITEERD WIM!".substr(info.score(), 1))
     mySprite2.setVelocity(randint(-70, -50), 0)
-    tiles.placeOnTile(mySprite2, tiles.getTileLocation(9, 5))
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(9.1, 5))
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy()
     if (info.score() == 18) {
         info.stopCountdown()
-        game.showLongText("GEFELICITEERD OPA!", DialogLayout.Bottom)
+        game.showLongText("GEFELICITEERD WIM!", DialogLayout.Bottom)
         game.over(true)
     }
     maak_taart()
@@ -65,7 +66,7 @@ mySprite = sprites.create(img`
 maak_taart()
 tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 5))
 mySprite.ay = 500
-info.startCountdown(50)
+info.startCountdown(40)
 game.onUpdateInterval(2000, function () {
     projectile = sprites.createProjectileFromSide(img`
         . . . . . . . . . . . . . . . . 
