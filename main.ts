@@ -43,7 +43,7 @@ let projectile: Sprite = null
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
 let Tekst = ""
-Tekst = "GEFELICITEERD TANTE JANNEKE!"
+Tekst = "GEFELICITEERD WIM!"
 tiles.setTilemap(tilemap`level7`)
 scene.setBackgroundColor(9)
 mySprite = sprites.create(img`
