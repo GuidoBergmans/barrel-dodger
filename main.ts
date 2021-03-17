@@ -2,7 +2,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
         mySprite.vy = -200
     }
-    music.beamUp.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
@@ -28,7 +27,7 @@ function maak_taart () {
         `, SpriteKind.Food)
     mySprite2.say("GEFELICITEERD WIM!".substr(info.score(), 1))
     mySprite2.setVelocity(randint(-70, -50), 0)
-    tiles.placeOnTile(mySprite2, tiles.getTileLocation(9.1, 5))
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(9, 5))
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -43,6 +42,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 let projectile: Sprite = null
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
+game.showLongText("dit is een game waarbij je taart moet eten. als je alle taart op hebt. dan zul je de letters die je zag achter elkaar zien dan kom je achter de boodschap. maar pas op zie je die zwarte bollen spring er over heen. dat kan je doen met de bovenste groene toets veel succes.", DialogLayout.Full)
 tiles.setTilemap(tilemap`level7`)
 scene.setBackgroundColor(9)
 mySprite = sprites.create(img`
