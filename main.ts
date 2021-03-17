@@ -26,7 +26,7 @@ function maak_taart () {
         . . . . . . b b b b 3 d d d b a 
         . . . . . . . . . . b b b a a . 
         `, SpriteKind.Food)
-    mySprite2.say("GEFELICITEERD WIM!".substr(info.score(), 1))
+    mySprite2.say("GEFELICITEERD OPA!".substr(info.score(), 1))
     mySprite2.setVelocity(randint(-70, -50), 0)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(9.1, 5))
 }
@@ -35,7 +35,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     otherSprite.destroy()
     if (info.score() == 18) {
         info.stopCountdown()
-        game.showLongText("GEFELICITEERD WIM!", DialogLayout.Bottom)
+        game.showLongText("GEFELICITEERD OPA!", DialogLayout.Bottom)
         game.over(true)
     }
     maak_taart()
